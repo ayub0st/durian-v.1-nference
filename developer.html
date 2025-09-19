@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Durian Health Inference</title>
+    <title>Durian Health Inference - Developer Mode</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
@@ -14,19 +14,21 @@
     <header class="topbar">
       <div class="brand">
         <img src="Gemini_Generated_Image_bojflsbojflsbojf.png" alt="logo" />
-        <span>Durian Health Inference</span>
+        <span>Durian Health Inference (Developer)</span>
       </div>
       <div class="toolbar">
-        <a href="developer.html" class="btn btn-ghost">โหมดนักพัฒนา</a>
+        <a href="index.html" class="btn btn-ghost">กลับหน้าหลัก</a>
+        <!-- <button class="btn btn-ghost" id="signinBtn">
+          Sign in with Google
+        </button> -->
       </div>
     </header>
 
     <main class="container">
       <section class="card">
-        <h2>อัปโหลดรูป</h2>
+        <h2>อัปโหลดรูป (สำหรับนักพัฒนา)</h2>
         <p class="hint">
-          อัปโหลด “ใบทุเรียน” ให้ชัด เต็มเฟรม พื้นหลังเรียบ •
-          รองรับวางไฟล์/เลือกไฟล์ หรือใส่ URL
+          อัปโหลด “ใบทุเรียน” เพื่อดูผลลัพธ์ JSON จากการวิเคราะห์
         </p>
         <div class="grid">
           <div class="col">
@@ -58,26 +60,14 @@
       </section>
 
       <section class="card">
-        <div id="gateAlert" class="alert hidden" data-dev-only></div>
+        <div id="gateAlert" class="alert hidden"></div>
         <div class="grid">
           <div class="col">
-            <h3>สรุปผล</h3>
-            <div id="top3cards" class="top3grid hidden"></div>
-            <div id="summary" class="panel"><em>ยังไม่มีผลลัพธ์</em></div>
-
-            <h3>คำแนะนำ</h3>
-            <div class="tabs">
-              <button class="tab active" data-tab="tips">คำแนะนำ</button>
-              <button class="tab" data-tab="actives">
-                ตัวยา (สารออกฤทธิ์)
-              </button>
-              <button class="tab" data-tab="fert">ปุ๋ยที่แนะนำ</button>
+            <h3>ผลลัพธ์ JSON</h3>
+            <div class="code-toolbar">
+              <button id="copyBtn" class="btn btn-ghost small">Copy</button>
             </div>
-            <div id="advice" class="panel">
-              <div id="advice-tips"></div>
-              <div id="advice-actives" class="hidden"></div>
-              <div id="advice-fert" class="hidden"></div>
-            </div>
+            <pre id="output" class="code">รอผลลัพธ์…</pre>
           </div>
         </div>
       </section>

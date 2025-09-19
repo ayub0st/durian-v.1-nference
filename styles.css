@@ -1,72 +1,373 @@
-:root{
-  --bg:#0b1220; --panel:#111a2e; --panel2:#0d1526; --text:#e6eeff; --muted:#9bb0cf;
-  --border:#1f2a44; --brand:#6aa6ff; --brand2:#59e1c7; --danger:#ff6b81; --ok:#28d098;
-  --r:16px;
+:root {
+  --bg: #0b1220;
+  --panel: #111a2e;
+  --panel2: #0d1526;
+  --text: #e6eeff;
+  --muted: #9bb0cf;
+  --border: #1f2a44;
+  --brand: #6aa6ff;
+  --brand2: #59e1c7;
+  --danger: #ff6b81;
+  --ok: #28d098;
+  --r: 16px;
 }
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; background:radial-gradient(1200px 1000px at 10% -10%, #1a2a4a 0%, var(--bg) 60%); color:var(--text)}
-a{color:var(--brand); text-decoration:none}
-.container{max-width:1100px; margin:24px auto; padding:0 16px}
-.topbar{display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0))}
-.brand{display:flex; gap:10px; align-items:center}
-.brand img{width:28px; height:28px}
-.brand span{font-weight:700}
-.toolbar{display:flex; gap:10px; align-items:center}
-.btn{appearance:none; border:none; border-radius:12px; padding:10px 14px; font-weight:700; cursor:pointer}
-.btn-ghost{background:transparent; border:1px solid var(--border); color:var(--text)}
-.btn-primary{background:linear-gradient(90deg, var(--brand), var(--brand2)); color:#0b1220}
-.btn.small{padding:6px 10px; font-size:12px}
-.hidden{display:none}
 
-.card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)); border:1px solid var(--border); border-radius:var(--r); padding:16px; margin:16px 0}
-.grid{display:grid; grid-template-columns:1fr; gap:16px}
-@media (min-width: 880px){ .grid{grid-template-columns:1fr 1fr} }
-.col{display:flex; flex-direction:column; gap:8px}
-.row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-.label{font-size:14px; color:var(--muted)}
-.input{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:var(--panel2); color:var(--text)}
-.status{font-size:12px; color:var(--muted)}
-.drop{display:flex; align-items:center; justify-content:center; text-align:center; gap:10px; background:var(--panel2); border:1px dashed var(--border); border-radius:12px; height:160px; padding:12px; color:var(--muted)}
-.preview{position:relative; margin-top:10px; border:1px solid var(--border); border-radius:12px; overflow:hidden}
-.preview img,.preview canvas{width:100%; display:block}
-#overlay{position:absolute; top:0; left:0; pointer-events:none}
-.panel{border:1px solid var(--border); background:#0a1120; padding:10px; border-radius:12px; min-height:100px}
-.code{margin-top:10px; background:#0a1120; border:1px solid var(--border); border-radius:12px; padding:12px; white-space:pre-wrap; word-break:break-word; font-family:ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size:13px; line-height:1.55; max-height:420px; overflow:auto}
-.code-toolbar{display:flex; justify-content:flex-end}
-.hint{font-size:12px; color:var(--muted)}
-ol{margin:0 0 0 18px}
-li+li{margin-top:4px}
+* {
+  box-sizing: border-box;
+}
 
-/* Alerts */
-.alert{border:1px solid var(--border); padding:12px; border-radius:12px; margin-bottom:12px; background:rgba(255,255,255,0.03); font-size:14px}
-.alert.error{border-color:rgba(255,0,89,.4); background:rgba(255,0,89,.08); color:#ffb1be}
-.alert.ok{border-color:rgba(0,255,153,.3); background:rgba(0,255,153,.07); color:#b4ffe8}
+html,
+body {
+  height: 100%;
+}
 
-/* Developer panel */
-.dev-panel{border-left:1px dashed var(--border); padding-left:12px}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto;
+  font-size: 18px;
+  line-height: 1.6;
+  background: radial-gradient(
+    1200px 1000px at 10% -10%,
+    #1a2a4a 0%,
+    var(--bg) 60%
+  );
+  color: var(--text);
+}
 
-/* Tabs */
-.tabs{display:flex; gap:8px; margin:6px 0 10px}
-.tab{background:var(--panel2); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:8px 12px; font-weight:600; cursor:pointer}
-.tab.active{outline:2px solid rgba(106,166,255,.6)}
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
 
-/* Top1/2/3 cards */
-.top3grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:8px 0 12px}
-.topcard{background:var(--panel2); border:1px solid var(--border); border-radius:12px; padding:10px}
-.topcard .badge{display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; border:1px solid var(--border); margin-bottom:6px}
-.badge.t1{background:rgba(40,208,152,.12)}
-.badge.t2{background:rgba(106,166,255,.12)}
-.badge.t3{background:rgba(255,107,129,.12)}
-.topcard .name{font-weight:700}
-.topcard .pct{opacity:.8}
+.container {
+  max-width: 1400px;
+  margin: 32px auto;
+  padding: 0 24px;
+}
 
-/* Advice lists */
-.advice-block{margin:10px 0 14px; padding:10px; border:1px solid var(--border); border-radius:12px}
-.advice-title{font-weight:700; margin-bottom:6px}
-.advice-list{margin:0; padding-left:20px}
-.kv{display:flex; gap:6px; flex-wrap:wrap; margin-top:6px}
-.pill{border:1px solid var(--border); border-radius:999px; padding:4px 8px; font-size:12px; background:rgba(255,255,255,.04)}
-.chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
-.chip{border:1px solid var(--border); border-radius:10px; padding:6px 10px; font-size:12px; background:var(--panel2)}
-.chip a{color:var(--text)}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.brand img {
+  width: 36px;
+  height: 36px;
+}
+
+.brand span {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn {
+  appearance: none;
+  border: none;
+  border-radius: 16px;
+  padding: 14px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--brand), var(--brand2));
+  color: #0b1220;
+}
+
+.hidden {
+  display: none;
+}
+
+.card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0)
+  );
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 880px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.label {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--panel2);
+  color: var(--text);
+  font-size: 18px;
+}
+
+.status {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.drop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  background: var(--panel2);
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  height: 180px;
+  padding: 16px;
+  color: var(--muted);
+}
+
+.preview {
+  position: relative;
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.preview img,
+.preview canvas {
+  width: 100%;
+  display: block;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  background: #0a1120;
+  padding: 16px;
+  border-radius: 16px;
+  min-height: 120px;
+  font-size: 18px;
+}
+
+.hint {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.alert {
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 16px;
+}
+
+.alert.error {
+  border-color: rgba(255, 0, 89, 0.4);
+  background: rgba(255, 0, 89, 0.08);
+  color: #ffb1be;
+}
+
+.alert.ok {
+  border-color: rgba(0, 255, 153, 0.3);
+  background: rgba(0, 255, 153, 0.07);
+  color: #b4ffe8;
+}
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+
+.tab {
+  background: var(--panel2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.tab.active {
+  outline: 2px solid rgba(106, 166, 255, 0.6);
+}
+
+/* Top3 result */
+.top3grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.result-card {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.result-label {
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 20px;
+  color: var(--brand2);
+}
+
+.result-confidence {
+  position: relative;
+  height: 16px;
+  background: var(--panel);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.result-confidence .progress-bar {
+  height: 100%;
+  background: var(--ok);
+  width: 0;
+  transition: width 0.5s ease-in-out;
+}
+
+.confidence-text {
+  font-size: 14px;
+  color: var(--muted);
+}
+/* Advice Panels */
+#advice-tips,
+#advice-actives,
+#advice-fert {
+  padding: 20px;
+  background: var(--panel2);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+/* ชื่อโรค / class */
+.adv b {
+  font-size: 20px;
+  color: var(--brand2);
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Chips สำหรับสารออกฤทธิ์ */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px 16px;
+  font-size: 16px;
+  background: var(--panel);
+  color: var(--text);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.chip a {
+  color: var(--brand2);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.chip:hover {
+  background: var(--panel2);
+  transform: translateY(-2px);
+}
+
+/* Pills สำหรับปุ๋ย */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.pill {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background: rgba(106, 166, 255, 0.1);
+  color: var(--text);
+  font-weight: 500;
+}
